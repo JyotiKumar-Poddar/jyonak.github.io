@@ -1009,3 +1009,52 @@ a:hover {
         font-size: 2rem;
     }
 }
+
+/* Featured Article Styles */
+.featured-article {
+    border: 2px solid var(--secondary-color);
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: visible;
+}
+
+.featured-article::before {
+    content: 'FEATURED';
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-bg);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.featured-article .article-category {
+    background-color: var(--secondary-color);
+    color: var(--primary-bg);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.article-preview-snippet {
+    margin: 15px 0;
+    background-color: var(--tertiary-bg);
+    border-radius: 4px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.code-snippet-mini {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
