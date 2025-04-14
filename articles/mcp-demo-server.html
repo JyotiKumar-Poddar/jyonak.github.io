@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Demo Server - JyotiKumar Poddar</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vscode-bg: #1e1e1e;
+            --vscode-text: #d4d4d4;
+            --vscode-keyword: #569cd6;
+            --vscode-string: #ce9178;
+            --vscode-comment: #6a9955;
+            --vscode-function: #dcdcaa;
+            --vscode-variable: #9cdcfe;
+            --vscode-type: #4ec9b0;
+            --vscode-number: #b5cea8;
+            --vscode-operator: #d4d4d4;
+            --vscode-punctuation: #d4d4d4;
+            --vscode-selection: #264f78;
+            --vscode-line-number: #858585;
+            --vscode-active-line: #282828;
+        }
+
+        body {
+            background-color: var(--vscode-bg);
+            color: var(--vscode-text);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .article-content h1 {
+            color: var(--vscode-function);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 1px solid var(--vscode-selection);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h2 {
+            color: var(--vscode-keyword);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--vscode-type);
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            color: var(--vscode-text);
+        }
+
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--vscode-text);
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content pre {
+            background-color: var(--vscode-active-line);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid var(--vscode-selection);
+        }
+
+        .article-content code {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--vscode-active-line);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            color: var(--vscode-text);
+        }
+
+        .article-content pre code {
+            padding: 0;
+            background-color: transparent;
+        }
+
+        .article-content a {
+            color: var(--vscode-keyword);
+            text-decoration: none;
+        }
+
+        .article-content a:hover {
+            text-decoration: underline;
+            color: var(--vscode-function);
+        }
+
+        .article-meta {
+            color: var(--vscode-comment);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* VS Code-like syntax highlighting */
+        .keyword { color: var(--vscode-keyword); }
+        .string { color: var(--vscode-string); }
+        .comment { color: var(--vscode-comment); }
+        .function { color: var(--vscode-function); }
+        .variable { color: var(--vscode-variable); }
+        .type { color: var(--vscode-type); }
+        .number { color: var(--vscode-number); }
+        .operator { color: var(--vscode-operator); }
+        .punctuation { color: var(--vscode-punctuation); }
+
+        /* Navigation styling */
+        .navbar {
+            background-color: var(--vscode-active-line);
+            border-bottom: 1px solid var(--vscode-selection);
+        }
+
+        .nav-links a {
+            color: var(--vscode-text);
+        }
+
+        .nav-links a:hover {
+            color: var(--vscode-keyword);
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: var(--vscode-active-line);
+            border-top: 1px solid var(--vscode-selection);
+            color: var(--vscode-comment);
+        }
+
+        /* Code block line numbers */
+        .code-line {
+            display: flex;
+            margin: 0;
+            padding: 0 0.5rem;
+        }
+
+        .line-number {
+            color: var(--vscode-line-number);
+            margin-right: 1rem;
+            user-select: none;
+            min-width: 2em;
+            text-align: right;
+        }
+
+        .line-content {
+            flex: 1;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background-color: var(--vscode-selection);
+            color: var(--vscode-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1><a href="../index.html">JyotiKumar Poddar</a></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#articles">Articles</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="article-content">
+        <article>
+            <h1>MCP Demo Server: A Simple Python Server with Addition Tool</h1>
+            <div class="article-meta">
+                <span>Published: April 12, 2025</span>
+            </div>
+
+            <h2>Overview</h2>
+            <p>The MCP Demo Server is a lightweight Python server that demonstrates basic functionality with a simple addition tool. This project serves as a great starting point for understanding server-side Python applications and tool integration.</p>
+
+            <h2>Features</h2>
+            <ul>
+                <li>Simple addition tool that takes two integers and returns their sum</li>
+                <li>Easy-to-use development mode with MCP Inspector</li>
+                <li>Hot-reloading for faster development</li>
+                <li>VS Code integration for seamless development experience</li>
+            </ul>
+
+            <h2>Technical Stack</h2>
+            <ul>
+                <li>Python 3.x</li>
+                <li>mcp-python</li>
+                <li>fastmcp</li>
+            </ul>
+
+            <h2>Getting Started</h2>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Python 3.x</li>
+                <li>pip (Python package installer)</li>
+            </ul>
+
+            <h3>Installation</h3>
+            <ol>
+                <li>Clone the repository:
+                    <pre><code><span class="comment"># Clone the repository</span>
+<span class="keyword">git</span> <span class="function">clone</span> <span class="string">https://github.com/jyonak/first-mcp</span>
+<span class="keyword">cd</span> first-mcp</code></pre>
+                </li>
+                <li>Create and activate a virtual environment:
+                    <pre><code><span class="comment"># Create virtual environment</span>
+<span class="keyword">python3</span> -m venv .venv
+
+<span class="comment"># Activate virtual environment</span>
+<span class="comment"># On Windows</span>
+.venv\Scripts\activate
+<span class="comment"># On macOS/Linux</span>
+<span class="keyword">source</span> .venv/bin/activate</code></pre>
+                </li>
+                <li>Install dependencies:
+                    <pre><code><span class="keyword">pip</span> <span class="function">install</span> mcp-python fastmcp</code></pre>
+                </li>
+            </ol>
+
+            <h2>Running the Server</h2>
+            <h3>Method 1: Using Python directly</h3>
+            <pre><code><span class="keyword">python</span> server.py</code></pre>
+
+            <h3>Method 2: Using VS Code</h3>
+            <ol>
+                <li>Open the project in VS Code</li>
+                <li>Install the Python extension</li>
+                <li>Press <code>F5</code> or use the Run and Debug menu</li>
+                <li>Select "Run MCP Server" configuration</li>
+            </ol>
+
+            <h3>Method 3: Development Mode with MCP Inspector</h3>
+            <pre><code><span class="comment"># Basic server run</span>
+<span class="keyword">mcp</span> <span class="function">dev</span> server.py
+
+<span class="comment"># Run with additional dependencies</span>
+<span class="keyword">mcp</span> <span class="function">dev</span> server.py --with pandas --with numpy
+
+<span class="comment"># Mount local code for development</span>
+<span class="keyword">mcp</span> <span class="function">dev</span> server.py --with-editable .</code></pre>
+
+            <h2>Project Structure</h2>
+            <pre><code>first-mcp/
+├── .vscode/
+│   └── mcp.json
+├── .gitignore
+├── README.md
+└── server.py</code></pre>
+
+            <h2>Configuration</h2>
+            <p>The server configuration is managed through <code>.vscode/mcp.json</code>, which includes:</p>
+            <ul>
+                <li>Time server configuration for timezone management</li>
+                <li>Add server configuration for the demo addition tool</li>
+            </ul>
+
+            <h2>Development Features</h2>
+            <ul>
+                <li>VS Code integration for Python development</li>
+                <li>Code linting and auto-formatting</li>
+                <li>Hot-reloading for faster development</li>
+                <li>MCP Inspector for debugging</li>
+            </ul>
+
+            <h2>Use Cases</h2>
+            <p>This demo server is perfect for:</p>
+            <ul>
+                <li>Learning Python server development</li>
+                <li>Understanding tool integration in Python</li>
+                <li>Testing MCP functionality</li>
+                <li>Starting a new Python server project</li>
+            </ul>
+
+            <h2>Future Enhancements</h2>
+            <p>Potential improvements for the project:</p>
+            <ul>
+                <li>Add more mathematical operations</li>
+                <li>Implement error handling</li>
+                <li>Add API documentation</li>
+                <li>Include unit tests</li>
+                <li>Add database integration</li>
+            </ul>
+
+            <h2>Resources</h2>
+            <ul>
+                <li><a href="https://github.com/jyonak/first-mcp" target="_blank">GitHub Repository</a></li>
+                <li><a href="https://docs.python.org/" target="_blank">Python Documentation</a></li>
+                <li><a href="https://docs.mcp-python.org/" target="_blank">MCP Python Documentation</a></li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2024 JyotiKumar Poddar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

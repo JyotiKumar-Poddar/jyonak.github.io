@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Java 8's Stream API - JyotiKumar Poddar</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="articles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1><a href="../index.html">JyotiKumar Poddar</a></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#articles" class="active">Articles</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" style="position: fixed; top: 0; left: 0; height: 3px; background-color: var(--secondary-color); width: 0; z-index: 1000; transition: width 0.1s;"></div>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> / <a href="index.html">Articles</a> / <span>Understanding Java 8's Stream API</span>
+            </div>
+            
+            <div class="article-container">
+                <article>
+                    <header class="article-header">
+                        <h1 class="article-title">Understanding Java 8's Stream API</h1>
+                        <div class="article-meta-full">
+                            <div class="article-meta-item">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>March 15, 2025</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>8 min read</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="fas fa-code"></i>
+                                <span>Java</span>
+                            </div>
+                            <div class="article-meta-item">
+                                <i class="fas fa-user"></i>
+                                <span>JyotiKumar Poddar</span>
+                            </div>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Java</span>
+                            <span class="article-tag">Functional Programming</span>
+                            <span class="article-tag">Stream API</span>
+                            <span class="article-tag">Lambda Expressions</span>
+                        </div>
+                    </header>
+                    
+                    <div class="article-toc">
+                        <h3 class="toc-title">Table of Contents</h3>
+                        <ul class="toc-list">
+                            <li class="toc-item">
+                                <a href="#introduction" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Introduction to Stream API
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#creating-streams" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Creating Streams
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#intermediate-operations" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Intermediate Operations
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#terminal-operations" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Terminal Operations
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#parallel-streams" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Parallel Streams
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#best-practices" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Best Practices
+                                </a>
+                            </li>
+                            <li class="toc-item">
+                                <a href="#conclusion" class="toc-link">
+                                    <i class="fas fa-chevron-right"></i>
+                                    Conclusion
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="article-body">
+                        <section id="introduction">
+                            <h2>Introduction to Stream API</h2>
+                            <p>
+                                Java 8 introduced a revolutionary feature called the Stream API, which fundamentally changed how we process collections of data in Java. Streams provide a functional approach to processing collections, allowing developers to write cleaner, more concise code that's often easier to understand and maintain.
+                            </p>
+                            <p>
+                                Before Java 8, when we needed to process collections, we typically used loops and conditional statements, which often led to verbose and error-prone code. The Stream API addresses these issues by providing a higher-level abstraction for data processing.
+                            </p>
+                            <p>
+                                A Stream in Java represents a sequence of elements on which various operations can be performed. Streams don't store data; they operate on the source data structure (like a collection) and produce a result. The key advantage is that streams can be processed in parallel without the developer having to write complex multithreading code.
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Traditional vs Stream Approach</span>
+                                    <div class="code-snippet-actions">
+                                        <button class="code-snippet-action" title="Copy code">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="comment">// Traditional approach</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">numbers</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">evenSquares</span> = <span class="keyword">new</span> <span class="type">ArrayList</span><>();</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content"><span class="keyword">for</span> (<span class="type">Integer</span> <span class="variable">num</span> : <span class="variable">numbers</span>) {</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content">    <span class="keyword">if</span> (<span class="variable">num</span> % 2 == 0) {</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content">        <span class="variable">evenSquares</span>.<span class="function">add</span>(<span class="variable">num</span> * <span class="variable">num</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content">    }</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">9</span>
+                                        <span class="line-content">}</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">10</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">11</span>
+                                        <span class="line-content"><span class="comment">// Stream approach</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">12</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">streamEvenSquares</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">13</span>
+                                        <span class="line-content">    .<span class="function">filter</span>(<span class="variable">n</span> -> <span class="variable">n</span> % 2 == 0)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">14</span>
+                                        <span class="line-content">    .<span class="function">map</span>(<span class="variable">n</span> -> <span class="variable">n</span> * <span class="variable">n</span>)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">15</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section id="creating-streams">
+                            <h2>Creating Streams</h2>
+                            <p>
+                                There are several ways to create streams in Java 8. The most common approach is to create a stream from a collection using the <code>stream()</code> method. However, Java provides multiple ways to create streams:
+                            </p>
+                            
+                            <h3>From Collections</h3>
+                            <p>
+                                Any collection in Java can be converted to a stream using the <code>stream()</code> method:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Creating Streams from Collections</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">names</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="type">Stream</span><<span class="type">String</span>> <span class="variable">nameStream</span> = <span class="variable">names</span>.<span class="function">stream</span>();</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>From Arrays</h3>
+                            <p>
+                                Arrays can be converted to streams using <code>Arrays.stream()</code> or <code>Stream.of()</code>:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Creating Streams from Arrays</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">String</span>[] <span class="variable">namesArray</span> = {<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>};</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="type">Stream</span><<span class="type">String</span>> <span class="variable">streamFromArray</span> = <span class="type">Arrays</span>.<span class="function">stream</span>(<span class="variable">namesArray</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="comment">// Alternatively</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content"><span class="type">Stream</span><<span class="type">String</span>> <span class="variable">streamOf</span> = <span class="type">Stream</span>.<span class="function">of</span>(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>);</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Stream.generate() and Stream.iterate()</h3>
+                            <p>
+                                For creating infinite streams, Java provides <code>Stream.generate()</code> and <code>Stream.iterate()</code>:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Creating Infinite Streams</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="comment">// Generate infinite stream of random numbers</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="type">Stream</span><<span class="type">Double</span>> <span class="variable">randomNumbers</span> = <span class="type">Stream</span>.<span class="function">generate</span>(<span class="type">Math</span>::<span class="function">random</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="comment">// Generate infinite stream of integers starting from 1</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content"><span class="type">Stream</span><<span class="type">Integer</span>> <span class="variable">integers</span> = <span class="type">Stream</span>.<span class="function">iterate</span>(1, <span class="variable">n</span> -> <span class="variable">n</span> + 1);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content"><span class="comment">// Note: When working with infinite streams, always use limiting operations</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">first10Numbers</span> = <span class="variable">integers</span>.<span class="function">limit</span>(10).<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section id="intermediate-operations">
+                            <h2>Intermediate Operations</h2>
+                            <p>
+                                Intermediate operations transform a stream into another stream. These operations are lazy, meaning they don't process the elements until a terminal operation is invoked. This allows for optimization of the processing pipeline.
+                            </p>
+                            <p>
+                                Here are some of the most commonly used intermediate operations:
+                            </p>
+                            
+                            <h3>filter()</h3>
+                            <p>
+                                The <code>filter()</code> operation creates a new stream that includes elements that match a given predicate:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Filter Operation Example</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">numbers</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="comment">// Filter even numbers</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">evenNumbers</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">    .<span class="function">filter</span>(<span class="variable">n</span> -> <span class="variable">n</span> % 2 == 0)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>map()</h3>
+                            <p>
+                                The <code>map()</code> operation transforms each element in the stream using a given function:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Map Operation Example</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">names</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="comment">// Convert names to uppercase</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">upperCaseNames</span> = <span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">    .<span class="function">map</span>(<span class="type">String</span>::<span class="function">toUpperCase</span>)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>flatMap()</h3>
+                            <p>
+                                The <code>flatMap()</code> operation is similar to <code>map()</code>, but it's used when each element in the stream maps to multiple elements:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">FlatMap Operation Example</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">List</span><<span class="type">Integer</span>>> <span class="variable">nestedLists</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content">    <span class="type">Arrays</span>.<span class="function">asList</span>(1, 2, 3),</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content">    <span class="type">Arrays</span>.<span class="function">asList</span>(4, 5, 6),</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content">    <span class="type">Arrays</span>.<span class="function">asList</span>(7, 8, 9)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content"><span class="comment">// Flatten the nested lists into a single list</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">flattenedList</span> = <span class="variable">nestedLists</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">9</span>
+                                        <span class="line-content">    .<span class="function">flatMap</span>(<span class="type">List</span>::<span class="function">stream</span>)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">10</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Other Intermediate Operations</h3>
+                            <p>
+                                There are several other useful intermediate operations:
+                            </p>
+                            <ul>
+                                <li><code>distinct()</code>: Returns a stream with distinct elements</li>
+                                <li><code>sorted()</code>: Returns a stream with sorted elements</li>
+                                <li><code>limit(n)</code>: Returns a stream with the first n elements</li>
+                                <li><code>skip(n)</code>: Returns a stream after skipping the first n elements</li>
+                                <li><code>peek()</code>: Returns the same stream after performing an action on each element (useful for debugging)</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="terminal-operations">
+                            <h2>Terminal Operations</h2>
+                            <p>
+                                Terminal operations produce a result or a side effect from a stream. After a terminal operation is performed, the stream pipeline is considered consumed and can no longer be used.
+                            </p>
+                            <p>
+                                Here are some of the most commonly used terminal operations:
+                            </p>
+                            
+                            <h3>collect()</h3>
+                            <p>
+                                The <code>collect()</code> operation is one of the most versatile terminal operations. It transforms the elements of a stream into a different form, often a collection:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Collect Operation Examples</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">names</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>, <span class="string">"David"</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="comment">// Collect to List</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">namesList</span> = <span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content"><span class="comment">// Collect to Set</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content"><span class="type">Set</span><<span class="type">String</span>> <span class="variable">namesSet</span> = <span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">9</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toSet</span>());</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">10</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">11</span>
+                                        <span class="line-content"><span class="comment">// Collect to Map</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">12</span>
+                                        <span class="line-content"><span class="type">Map</span><<span class="type">String</span>, <span class="type">Integer</span>> <span class="variable">nameToLength</span> = <span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">13</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toMap</span>(</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">14</span>
+                                        <span class="line-content">        <span class="variable">name</span> -> <span class="variable">name</span>,           <span class="comment">// Key mapper</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">15</span>
+                                        <span class="line-content">        <span class="type">String</span>::<span class="function">length</span>        <span class="comment">// Value mapper</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">16</span>
+                                        <span class="line-content">    ));</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>reduce()</h3>
+                            <p>
+                                The <code>reduce()</code> operation combines the elements of a stream into a single result:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Reduce Operation Examples</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">numbers</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(1, 2, 3, 4, 5);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="comment">// Sum of all numbers</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="type">int</span> <span class="variable">sum</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">    .<span class="function">reduce</span>(0, (<span class="variable">a</span>, <span class="variable">b</span>) -> <span class="variable">a</span> + <span class="variable">b</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content"><span class="comment">// Alternative using method reference</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content"><span class="type">int</span> <span class="variable">sum2</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">9</span>
+                                        <span class="line-content">    .<span class="function">reduce</span>(0, <span class="type">Integer</span>::<span class="function">sum</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">10</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">11</span>
+                                        <span class="line-content"><span class="comment">// Product of all numbers</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">12</span>
+                                        <span class="line-content"><span class="type">int</span> <span class="variable">product</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">13</span>
+                                        <span class="line-content">    .<span class="function">reduce</span>(1, (<span class="variable">a</span>, <span class="variable">b</span>) -> <span class="variable">a</span> * <span class="variable">b</span>);</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>forEach()</h3>
+                            <p>
+                                The <code>forEach()</code> operation performs an action for each element in the stream:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">ForEach Operation Example</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">names</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="comment">// Print each name</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">    .<span class="function">forEach</span>(<span class="type">System</span>.out::<span class="function">println</span>);</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Other Terminal Operations</h3>
+                            <p>
+                                There are several other useful terminal operations:
+                            </p>
+                            <ul>
+                                <li><code>count()</code>: Returns the count of elements in the stream</li>
+                                <li><code>anyMatch()</code>: Returns true if any elements match the given predicate</li>
+                                <li><code>allMatch()</code>: Returns true if all elements match the given predicate</li>
+                                <li><code>noneMatch()</code>: Returns true if no elements match the given predicate</li>
+                                <li><code>findFirst()</code>: Returns the first element of the stream (as an Optional)</li>
+                                <li><code>findAny()</code>: Returns any element of the stream (as an Optional)</li>
+                                <li><code>min()</code>: Returns the minimum element based on a comparator</li>
+                                <li><code>max()</code>: Returns the maximum element based on a comparator</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="parallel-streams">
+                            <h2>Parallel Streams</h2>
+                            <p>
+                                One of the most powerful features of the Stream API is the ability to process elements in parallel, which can significantly improve performance for large data sets.
+                            </p>
+                            <p>
+                                Creating a parallel stream is as simple as calling <code>parallelStream()</code> on a collection or <code>parallel()</code> on an existing stream:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Parallel Stream Examples</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">numbers</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="comment">// Using parallelStream() on a collection</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">parallelResult1</span> = <span class="variable">numbers</span>.<span class="function">parallelStream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">    .<span class="function">map</span>(<span class="variable">n</span> -> <span class="variable">n</span> * 2)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content"><span class="comment">// Using parallel() on an existing stream</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">9</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">parallelResult2</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">10</span>
+                                        <span class="line-content">    .<span class="function">parallel</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">11</span>
+                                        <span class="line-content">    .<span class="function">map</span>(<span class="variable">n</span> -> <span class="variable">n</span> * 2)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">12</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p>
+                                While parallel streams can improve performance, they come with some caveats:
+                            </p>
+                            <ul>
+                                <li>They may not always be faster, especially for small data sets</li>
+                                <li>Operations should be stateless and non-interfering</li>
+                                <li>The order of execution is not guaranteed</li>
+                                <li>They share the common ForkJoinPool, which might affect other parallel operations in the application</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="best-practices">
+                            <h2>Best Practices</h2>
+                            <p>
+                                To get the most out of the Stream API, consider these best practices:
+                            </p>
+                            
+                            <h3>Use Method References</h3>
+                            <p>
+                                Method references often make code more readable than lambda expressions:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Method References vs Lambda Expressions</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="comment">// Lambda expression</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="variable">names</span>.<span class="function">stream</span>().<span class="function">map</span>(<span class="variable">s</span> -> <span class="variable">s</span>.<span class="function">toUpperCase</span>());</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="comment">// Method reference (cleaner)</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content"><span class="variable">names</span>.<span class="function">stream</span>().<span class="function">map</span>(<span class="type">String</span>::<span class="function">toUpperCase</span>);</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Avoid Side Effects</h3>
+                            <p>
+                                Stream operations should be pure functions without side effects:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Avoiding Side Effects</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="comment">// Bad: Side effect in filter</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">filteredNames</span> = <span class="keyword">new</span> <span class="type">ArrayList</span><>();</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content">    .<span class="function">filter</span>(<span class="variable">name</span> -> {</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content">        <span class="keyword">if</span> (<span class="variable">name</span>.<span class="function">length</span>() > 3) {</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content">            <span class="variable">filteredNames</span>.<span class="function">add</span>(<span class="variable">name</span>);  <span class="comment">// Side effect!</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content">        }</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">8</span>
+                                        <span class="line-content">        <span class="keyword">return</span> <span class="variable">name</span>.<span class="function">length</span>() > 3;</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">9</span>
+                                        <span class="line-content">    })</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">10</span>
+                                        <span class="line-content">    .<span class="function">count</span>();</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">11</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">12</span>
+                                        <span class="line-content"><span class="comment">// Good: No side effects</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">13</span>
+                                        <span class="line-content"><span class="type">List</span><<span class="type">String</span>> <span class="variable">betterFilteredNames</span> = <span class="variable">names</span>.<span class="function">stream</span>()</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">14</span>
+                                        <span class="line-content">    .<span class="function">filter</span>(<span class="variable">name</span> -> <span class="variable">name</span>.<span class="function">length</span>() > 3)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">15</span>
+                                        <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Use Specialized Streams for Primitives</h3>
+                            <p>
+                                For primitive types, use specialized streams like IntStream, LongStream, and DoubleStream to avoid boxing/unboxing overhead:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Using Specialized Streams</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="comment">// Less efficient (boxing/unboxing)</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="type">Stream</span><<span class="type">Integer</span>> <span class="variable">boxedStream</span> = <span class="type">Stream</span>.<span class="function">of</span>(1, 2, 3, 4, 5);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"><span class="type">int</span> <span class="variable">sum1</span> = <span class="variable">boxedStream</span>.<span class="function">mapToInt</span>(<span class="type">Integer</span>::<span class="function">intValue</span>).<span class="function">sum</span>();</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content"><span class="comment">// More efficient (no boxing/unboxing)</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content"><span class="type">IntStream</span> <span class="variable">intStream</span> = <span class="type">IntStream</span>.<span class="function">of</span>(1, 2, 3, 4, 5);</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content"><span class="type">int</span> <span class="variable">sum2</span> = <span class="variable">intStream</span>.<span class="function">sum</span>();</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Be Careful with Infinite Streams</h3>
+                            <p>
+                                When working with infinite streams, always use limiting operations:
+                            </p>
+                            
+                            <div class="code-snippet">
+                                <div class="code-snippet-header">
+                                    <span class="code-snippet-title">Working with Infinite Streams</span>
+                                </div>
+                                <div class="code-snippet-content">
+                                    <div class="code-line">
+                                        <span class="line-number">1</span>
+                                        <span class="line-content"><span class="comment">// This will run forever!</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">2</span>
+                                        <span class="line-content"><span class="comment">// Stream.iterate(1, n -> n + 1).forEach(System.out::println);</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">3</span>
+                                        <span class="line-content"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">4</span>
+                                        <span class="line-content"><span class="comment">// This is safe</span></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">5</span>
+                                        <span class="line-content"><span class="type">Stream</span>.<span class="function">iterate</span>(1, <span class="variable">n</span> -> <span class="variable">n</span> + 1)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">6</span>
+                                        <span class="line-content">    .<span class="function">limit</span>(10)</span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="line-number">7</span>
+                                        <span class="line-content">    .<span class="function">forEach</span>(<span class="type">System</span>.out::<span class="function">println</span>);</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section id="conclusion">
+                            <h2>Conclusion</h2>
+                            <p>
+                                Java 8's Stream API represents a paradigm shift in how we process collections in Java. By embracing functional programming concepts, it allows developers to write more concise, readable, and maintainable code.
+                            </p>
+                            <p>
+                                The key benefits of using the Stream API include:
+                            </p>
+                            <ul>
+                                <li>More declarative code that focuses on "what" rather than "how"</li>
+                                <li>Built-in support for parallel processing</li>
+                                <li>Lazy evaluation for better performance</li>
+                                <li>Reduced boilerplate code</li>
+                                <li>Better integration with functional interfaces and lambda expressions</li>
+                            </ul>
+                            <p>
+                                As you become more familiar with the Stream API, you'll find that it becomes a natural part of your Java programming toolkit, helping you write cleaner and more efficient code.
+                            </p>
+                        </section>
+                    </div>
+                    
+                    <footer class="article-footer">
+                        <div class="article-share">
+                            <h3 class="share-title">Share this article</h3>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="share-button linkedin">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="share-button facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="article-navigation">
+                            <a href="scalable-go-applications.html" class="article-nav-link">
+                                <span class="article-nav-direction">Next Article</span>
+                                <span class="article-nav-title">Building Scalable Applications with Go</span>
+                            </a>
+                            <a href="java-design-patterns.html" class="article-nav-link">
+                                <span class="article-nav-direction">Previous Article</span>
+                                <span class="article-nav-title">Mastering Java Design Patterns</span>
+                            </a>
+                        </div>
+                    </footer>
+                </article>
+                
+                <div class="related-articles">
+                    <h3 class="related-title">Related Articles</h3>
+                    <div class="related-articles-grid">
+                        <div class="article-card">
+                            <div class="article-meta">
+                                <span class="article-date"><i class="far fa-calendar-alt"></i> Nov 5, 2024</span>
+                                <span class="article-category java">Java</span>
+                            </div>
+                            <h3>Mastering Java Design Patterns</h3>
+                            <p>Implementing and utilizing design patterns effectively in Java applications.</p>
+                            <a href="java-design-patterns.html" class="read-more">Read More</a>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-meta">
+                                <span class="article-date"><i class="far fa-calendar-alt"></i> Jan 20, 2025</span>
+                                <span class="article-category spring">Spring Boot</span>
+                            </div>
+                            <h3>Integrating Redis with Spring Boot</h3>
+                            <p>Best practices and lessons learned when implementing Redis caching in Spring Boot applications.</p>
+                            <a href="redis-spring-boot.html" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 JyotiKumar Poddar. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="index.html">Articles</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="articles.js"></script>
+</body>
+</html>

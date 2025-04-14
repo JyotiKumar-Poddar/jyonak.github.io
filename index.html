@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JyotiKumar Poddar - Developer Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>JyotiKumar Poddar</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+            <div class="hero">
+                <div class="hero-content">
+                    <h2 class="typewriter">Backend Developer & Software Engineer</h2>
+                    <p class="typing-text">Specializing in Java, Go, JavaScript, and Python</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Terminal Introduction -->
+    <div class="container">
+        <div class="terminal">
+            <div class="terminal-content">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">whoami</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output">JyotiKumar Poddar</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">cat skills.txt</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output">Java, Go, JavaScript, Python, Spring Boot, React, Redis</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">git status</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output">On branch main</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output">37 repositories, 15 stars, 2 followers</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">_</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate backend developer with expertise in multiple programming languages and frameworks. My focus areas include data structures, design patterns, concurrency, and functional programming.</p>
+                    <div class="github-stats">
+                        <div class="stat">
+                            <i class="fas fa-code-branch"></i>
+                            <span>37 Repositories</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>15 Stars</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>2 Followers</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Code Snippet -->
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">AboutMe.java</span>
+                            <div class="code-snippet-actions">
+                                <button class="code-snippet-action" title="Copy code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">AboutMe</span> {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">name</span> = <span class="string">"JyotiKumar Poddar"</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">role</span> = <span class="string">"Backend Developer"</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content">    </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="line-content">    <span class="keyword">public</span> <span class="type">List</span><<span class="type">String</span>> <span class="function">getSkills</span>() {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">6</span>
+                                <span class="line-content">        <span class="keyword">return</span> <span class="type">Arrays</span>.<span class="function">asList</span>(</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">7</span>
+                                <span class="line-content">            <span class="string">"Java"</span>, <span class="string">"Go"</span>, <span class="string">"JavaScript"</span>, <span class="string">"Python"</span>,</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">8</span>
+                                <span class="line-content">            <span class="string">"Spring Boot"</span>, <span class="string">"React"</span>, <span class="string">"Redis"</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">9</span>
+                                <span class="line-content">        );</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">10</span>
+                                <span class="line-content">    }</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">11</span>
+                                <span class="line-content">}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-categories">
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Java</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Go</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>JavaScript</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Python</span>
+                                    <span class="skill-level">Beginner</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Frameworks & Tools</h4>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Spring Boot</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>React</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Redux</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Redis</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>java8</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/JyotiKumar-Poddar/java8" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">Explores Java 8 features like forEach, lambda expressions, Stream API, and more.</p>
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">StreamExample.java</span>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">numbers</span> = <span class="type">Arrays</span>.<span class="function">asList</span>(1, 2, 3, 4, 5);</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content"><span class="type">List</span><<span class="type">Integer</span>> <span class="variable">squared</span> = <span class="variable">numbers</span>.<span class="function">stream</span>()</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content">    .<span class="function">map</span>(n -> n * n)</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content">    .<span class="function">collect</span>(<span class="type">Collectors</span>.<span class="function">toList</span>());</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Functional Programming</span>
+                        <span class="tag">Stream API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>golang-app</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/JyotiKumar-Poddar/golang-app" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">Projects and experiments using Go language.</p>
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">concurrency.go</span>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="keyword">func</span> <span class="function">main</span>() {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content">    <span class="variable">ch</span> := <span class="function">make</span>(<span class="keyword">chan</span> <span class="type">string</span>)</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content">    <span class="keyword">go</span> <span class="function">sendData</span>(<span class="variable">ch</span>)</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content">    <span class="variable">msg</span> := <-<span class="variable">ch</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="line-content">    <span class="function">fmt</span>.<span class="function">Println</span>(<span class="variable">msg</span>)</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">6</span>
+                                <span class="line-content">}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Go</span>
+                        <span class="tag">Backend</span>
+                        <span class="tag">Concurrency</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>redis-springboot-starter</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/JyotiKumar-Poddar/redis-springboot-starter" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">Integrating Redis with Spring Boot applications.</p>
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">RedisConfig.java</span>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="annotation">@Configuration</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">RedisConfig</span> {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content">    <span class="annotation">@Bean</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content">    <span class="keyword">public</span> <span class="type">RedisTemplate</span><<span class="type">String</span>, <span class="type">Object</span>> <span class="function">redisTemplate</span>() {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="line-content">        <span class="comment">// Redis configuration</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">6</span>
+                                <span class="line-content">    }</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">7</span>
+                                <span class="line-content">}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>react-redux-app</h3>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">A sample application demonstrating React and Redux integration.</p>
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">reducer.js</span>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="keyword">const</span> <span class="variable">initialState</span> = {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content">  <span class="variable">count</span>: <span class="number">0</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content">};</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content"></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="line-content"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function">function</span> <span class="function">counterReducer</span>(<span class="variable">state</span> = <span class="variable">initialState</span>, <span class="variable">action</span>) {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">6</span>
+                                <span class="line-content">  <span class="keyword">switch</span> (<span class="variable">action</span>.<span class="variable">type</span>) {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">7</span>
+                                <span class="line-content">    <span class="keyword">case</span> <span class="string">'INCREMENT'</span>:</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">8</span>
+                                <span class="line-content">      <span class="keyword">return</span> { <span class="variable">count</span>: <span class="variable">state</span>.<span class="variable">count</span> + <span class="number">1</span> };</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">9</span>
+                                <span class="line-content">    <span class="keyword">default</span>:</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">10</span>
+                                <span class="line-content">      <span class="keyword">return</span> <span class="variable">state</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">11</span>
+                                <span class="line-content">  }</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">12</span>
+                                <span class="line-content">}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Redux</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>java-design-pattern</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/JyotiKumar-Poddar/java-design-pattern" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">Implementation of various Java design patterns.</p>
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">Singleton.java</span>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">Singleton</span> {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content">    </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content">    <span class="keyword">private</span> <span class="function">Singleton</span>() {}</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="line-content">    </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">6</span>
+                                <span class="line-content">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="type">Singleton</span> <span class="function">getInstance</span>() {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">7</span>
+                                <span class="line-content">        <span class="keyword">if</span> (<span class="variable">instance</span> == <span class="keyword">null</span>) {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">8</span>
+                                <span class="line-content">            <span class="variable">instance</span> = <span class="keyword">new</span> <span class="type">Singleton</span>();</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">9</span>
+                                <span class="line-content">        }</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">10</span>
+                                <span class="line-content">        <span class="keyword">return</span> <span class="variable">instance</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">11</span>
+                                <span class="line-content">    }</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">12</span>
+                                <span class="line-content">}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Design Patterns</span>
+                        <span class="tag">OOP</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>LearningPython</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/JyotiKumar-Poddar/LearningPython" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">Resources and code snippets for learning Python.</p>
+                    <div class="code-snippet">
+                        <div class="code-snippet-header">
+                            <span class="code-snippet-title">list_comprehension.py</span>
+                        </div>
+                        <div class="code-snippet-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="line-content"><span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="line-content"></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="line-content"><span class="comment"># List comprehension</span></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="line-content"><span class="variable">squared</span> = [<span class="variable">x</span>**<span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">numbers</span>]</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="line-content"></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">6</span>
+                                <span class="line-content"><span class="variable">even_squares</span> = [<span class="variable">x</span>**<span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">numbers</span> <span class="keyword">if</span> <span class="variable">x</span> % <span class="number">2</span> == <span class="number">0</span>]</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="section">
+        <div class="container">
+            <h2 class="section-title">Articles & Blog Posts</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Apr 12, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                    </div>
+                    <h3>MCP Demo Server: A Simple Python Server with Addition Tool</h3>
+                    <p>A lightweight Python server demonstrating basic functionality with a simple addition tool. Perfect for learning server-side Python applications.</p>
+                    <a href="articles/mcp-demo-server.html" class="read-more">Read More</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Mar 15, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                    </div>
+                    <h3>Understanding Java 8's Stream API</h3>
+                    <p>A deep dive into functional programming with Java 8. Learn how to leverage streams for cleaner, more efficient code.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Feb 28, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                    <h3>Building Scalable Applications with Go</h3>
+                    <p>Insights from developing projects in Go. Explore concurrency patterns and performance optimization techniques.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Jan 20, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                    </div>
+                    <h3>Integrating Redis with Spring Boot</h3>
+                    <p>Best practices and lessons learned when implementing Redis caching in Spring Boot applications.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Dec 12, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 9 min read</span>
+                    </div>
+                    <h3>React and Redux: A Practical Approach</h3>
+                    <p>Building dynamic front-end applications with React and Redux. Includes state management patterns and performance tips.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Nov 5, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 12 min read</span>
+                    </div>
+                    <h3>Mastering Java Design Patterns</h3>
+                    <p>Implementing and utilizing design patterns effectively in Java applications. From Singleton to Observer and beyond.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Oct 18, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    <h3>Python for Beginners</h3>
+                    <p>A journey through learning Python programming. Covers basic syntax, data structures, and practical examples.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-header">
+                    <h3>$ contact --send-message</h3>
+                </div>
+                <div class="contact-info">
+                    <p>Feel free to reach out to me through any of the following platforms:</p>
+                    <div class="social-links">
+                        <a href="https://github.com/JyotiKumar-Poddar" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 JyotiKumar Poddar. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#header">Back to Top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

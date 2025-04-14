@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - JyotiKumar Poddar</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="articles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1><a href="../index.html">JyotiKumar Poddar</a></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#articles" class="active">Articles</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section id="articles-page" class="section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> / <span>Articles</span>
+            </div>
+            
+            <h1 class="page-title">Articles & Blog Posts</h1>
+            
+            <div class="articles-filters">
+                <div class="search-container">
+                    <input type="text" id="article-search" placeholder="Search articles..." class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="java">Java</option>
+                            <option value="go">Go</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="spring">Spring Boot</option>
+                            <option value="react">React</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sort-filter">Sort By:</label>
+                        <select id="sort-filter" class="filter-select">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="read-time">Reading Time</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="articles-grid">
+                <div class="article-card" data-categories="java functional-programming">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Mar 15, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                        <span class="article-category java">Java</span>
+                    </div>
+                    <h3>Understanding Java 8's Stream API</h3>
+                    <p>A deep dive into functional programming with Java 8. Learn how to leverage streams for cleaner, more efficient code.</p>
+                    <div class="article-preview-snippet">
+                        <div class="code-snippet-mini">
+                            <code>List&lt;Integer&gt; result = numbers.stream()<br>.filter(n -> n % 2 == 0)<br>.map(n -> n * 2)<br>.collect(Collectors.toList());</code>
+                        </div>
+                    </div>
+                    <a href="java-stream-api.html" class="read-more">Read Full Article</a>
+                </div>
+
+                <div class="article-card" data-categories="go backend concurrency">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Feb 28, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 10 min read</span>
+                        <span class="article-category go">Go</span>
+                    </div>
+                    <h3>Building Scalable Applications with Go</h3>
+                    <p>Insights from developing projects in Go. Explore concurrency patterns and performance optimization techniques.</p>
+                    <div class="article-preview-snippet">
+                        <div class="code-snippet-mini">
+                            <code>go func() {<br>  for data := range channel {<br>    process(data)<br>  }<br>}()</code>
+                        </div>
+                    </div>
+                    <a href="scalable-go-applications.html" class="read-more">Read Full Article</a>
+                </div>
+
+                <div class="article-card" data-categories="java spring-boot redis">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Jan 20, 2025</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        <span class="article-category spring">Spring Boot</span>
+                    </div>
+                    <h3>Integrating Redis with Spring Boot</h3>
+                    <p>Best practices and lessons learned when implementing Redis caching in Spring Boot applications.</p>
+                    <div class="article-preview-snippet">
+                        <div class="code-snippet-mini">
+                            <code>@Cacheable(value = "users", key = "#id")<br>public User getUser(String id) {<br>  return userRepository.findById(id);<br>}</code>
+                        </div>
+                    </div>
+                    <a href="redis-spring-boot.html" class="read-more">Read Full Article</a>
+                </div>
+
+                <div class="article-card" data-categories="javascript react redux">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Dec 12, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 9 min read</span>
+                        <span class="article-category react">React</span>
+                    </div>
+                    <h3>React and Redux: A Practical Approach</h3>
+                    <p>Building dynamic front-end applications with React and Redux. Includes state management patterns and performance tips.</p>
+                    <div class="article-preview-snippet">
+                        <div class="code-snippet-mini">
+                            <code>const mapStateToProps = state => ({<br>  todos: state.todos,<br>  filter: state.visibilityFilter<br>});</code>
+                        </div>
+                    </div>
+                    <a href="react-redux-approach.html" class="read-more">Read Full Article</a>
+                </div>
+
+                <div class="article-card" data-categories="java design-patterns">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Nov 5, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 12 min read</span>
+                        <span class="article-category java">Java</span>
+                    </div>
+                    <h3>Mastering Java Design Patterns</h3>
+                    <p>Implementing and utilizing design patterns effectively in Java applications. From Singleton to Observer and beyond.</p>
+                    <div class="article-preview-snippet">
+                        <div class="code-snippet-mini">
+                            <code>public class Singleton {<br>  private static Singleton instance;<br>  private Singleton() {}<br>  public static synchronized Singleton getInstance() {...}</code>
+                        </div>
+                    </div>
+                    <a href="java-design-patterns.html" class="read-more">Read Full Article</a>
+                </div>
+
+                <div class="article-card" data-categories="python beginner">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar-alt"></i> Oct 18, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        <span class="article-category python">Python</span>
+                    </div>
+                    <h3>Python for Beginners</h3>
+                    <p>A journey through learning Python programming. Covers basic syntax, data structures, and practical examples.</p>
+                    <div class="article-preview-snippet">
+                        <div class="code-snippet-mini">
+                            <code>def greet(name):<br>    return f"Hello, {name}!"<br><br>print(greet("World"))</code>
+                        </div>
+                    </div>
+                    <a href="python-for-beginners.html" class="read-more">Read Full Article</a>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <span class="pagination-info">Showing 6 articles</span>
+                <div class="pagination-controls">
+                    <a href="#" class="pagination-btn active">1</a>
+                    <a href="#" class="pagination-btn disabled">2</a>
+                    <a href="#" class="pagination-btn disabled">Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 JyotiKumar Poddar. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="articles.js"></script>
+</body>
+</html>
